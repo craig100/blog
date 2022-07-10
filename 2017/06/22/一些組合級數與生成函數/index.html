@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"craig100.github.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="動機：組合級數  數學之浩瀚實在出乎意料。這學期，筆者在師大修了一門課，叫做數學教學解題研究，是游森棚教官開的課。在課堂中，我們要處理一個有點神奇的組合學計數問題，這個問題是這樣的：  考慮座標平面上，由原點出發，每次只走右或上一格，最終抵達終點 $(n,n)$ ，則這些路徑在行進中，總共會碰到形如 $(0,0)$,$(1,1)$,$\dots$,$(n,n)$ 的點幾次？    當中使用了算兩次">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些組合級數與生成函數">
+<meta property="og:url" content="https://craig100.github.io/blog/2017/06/22/%E4%B8%80%E4%BA%9B%E7%B5%84%E5%90%88%E7%B4%9A%E6%95%B8%E8%88%87%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="動機：組合級數  數學之浩瀚實在出乎意料。這學期，筆者在師大修了一門課，叫做數學教學解題研究，是游森棚教官開的課。在課堂中，我們要處理一個有點神奇的組合學計數問題，這個問題是這樣的：  考慮座標平面上，由原點出發，每次只走右或上一格，最終抵達終點 $(n,n)$ ，則這些路徑在行進中，總共會碰到形如 $(0,0)$,$(1,1)$,$\dots$,$(n,n)$ 的點幾次？    當中使用了算兩次">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-06-22T03:02:37.000Z">
+<meta property="article:modified_time" content="2022-07-10T23:55:56.029Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://craig100.github.io/blog/2017/06/22/%E4%B8%80%E4%BA%9B%E7%B5%84%E5%90%88%E7%B4%9A%E6%95%B8%E8%88%87%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>一些組合級數與生成函數 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://craig100.github.io/blog/2017/06/22/%E4%B8%80%E4%BA%9B%E7%B5%84%E5%90%88%E7%B4%9A%E6%95%B8%E8%88%87%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一些組合級數與生成函數
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-06-22 03:02:37" itemprop="dateCreated datePublished" datetime="2017-06-22T03:02:37+00:00">2017-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-10 23:55:56" itemprop="dateModified" datetime="2022-07-10T23:55:56+00:00">2022-07-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="動機：組合級數"><a href="#動機：組合級數" class="headerlink" title="動機：組合級數"></a>動機：組合級數</h2><p>  數學之浩瀚實在出乎意料。這學期，筆者在師大修了一門課，叫做數學教學解題研究，是游森棚教官開的課。在課堂中，我們要處理一個有點神奇的組合學計數問題，這個問題是這樣的：</p>
+<blockquote>
+<p>考慮座標平面上，由原點出發，每次只走右或上一格，最終抵達終點 $(n,n)$ ，則這些路徑在行進中，總共會碰到形如 $(0,0)$,$(1,1)$,$\dots$,$(n,n)$ 的點幾次？</p>
+</blockquote>
+<p>  當中使用了算兩次 (double counting) 的技巧，但因為不是本篇文章的重點，我們就先略過，最後經過一番努力後，會得到以下式子：</p>
+<p> \begin{equation}<br>    \sum^{n}_{k&#x3D;0} \binom{2k}{k} \binom{2n-2k}{n-k}<br> \end{equation}</p>
+<p>  也就是要算</p>
+<p> \begin{equation}<br>    \binom{0}{0} \binom{2n}{n}+ \binom{2}{1}\binom{2n-2}{n-1} +\binom{4}{2}\binom{2n-4}{n-2} + \dots +\binom{2n}{n} \binom{0}{0}<br> \end{equation}</p>
+<p>  並且因爲一些猜測，我們相信上式的值要是 $4^n$ ，但這個結果並不顯然，於是我們引進生成函數的概念。</p>
+<span id="more"></span>
+
+<h2 id="生成函數"><a href="#生成函數" class="headerlink" title="生成函數"></a>生成函數</h2><p> 首先，生成函數是這樣定義的：</p>
+<blockquote>
+<p>** 生成函數 (generating function) **<br> 給定一個數列 {$a_k$}$^{\infty}_{k&#x3D;0}$ ，則函數<br> \begin{equation}<br>  f(x)&#x3D;\sum^{\infty}_{k&#x3D;0}a_kx^k&#x3D;a_0+a_1x+ \dots + a_nx^n + \dots<br> \end{equation}</p>
+</blockquote>
+<p>稱為數列此數列之 ( 普通 ) 生成函數 (ordinary generating function) 或組合生成函數 (generating function for combination)。</p>
+<p>現在我們可以做一些簡單的觀察，例如，考慮</p>
+<p>\begin{equation}<br>(1+ax)(1+bx)(1+cx)&#x3D;1+(a+b+c)x+(ab+bc+ac)x^2+abcx^3<br>\end{equation}</p>
+<p>這個乘法的結構很單純，右式的一次方、二次方與三次方項係數，分別是 $a,b,c$ 的基本對稱多項式 (symmetry polynomial) 。當然，這個式子有組合的意義：我們將 $a,b,c$ 看成三個物品，而常數項 $1$ 表示在三物品中一個都不取， $x$ 的一次方係數 $a+b+c$ 表示在 $a,b,c$ 中取一個的所有組合，即取 $a$ 、取 $b$ 或取 $c$，而 $x$ 的二次方係數 $ab+bc+ac$ 表示取二個的各種組合，最後， $x$ 的三次方係數表示了三個皆取的唯一方法。在這裡可能產生各種情形是用 $+$ 號連接，代表加法原理，同時發生之事件則用 $\cdot$ 號，代表乘法原理。</p>
+<p>所以回到式 (2) 的問題，我們可以定義一個數列： {$a_k$} ，其中對於所有正整數 $k$ 有</p>
+<p>$$a_k &#x3D; \binom{2k}{k} $$</p>
+<p>並以此構造其生成函數：</p>
+<p>\begin{equation}<br>F(x)&#x3D;\binom{0}{0} + \binom{2}{1}x +\binom{4}{2}x^2 + \dots +\binom{2n}{n}x^n+\dots<br>\end{equation}</p>
+<p>巧妙地，我們可以透過 (4) 式的觀察，發現我們在 (2) 式所求，即為 $F^2(x)$ 的 $n$ 次方係數。所以，現在的問題是， $F(x)$ 的確切型式 (exact form) 是什麼？</p>
+<p>以下，我們先定義廣義的組合數：</p>
+<blockquote>
+<p><strong>廣義組合數 (generalized binomial number)</strong><br> 若 $\alpha$ 為任意實數，則我們可定義廣義組合數為：<br> \begin{equation}<br>   \binom{\alpha}{k}&#x3D;\dfrac{\alpha (\alpha -1) \dots (\alpha -(k-1))}{k!}<br> \end{equation}</p>
+</blockquote>
+<p>很自然地，因為 $\alpha$ 為任意實數，所以二項式定理可以被推廣為<br>$$ (x+y)^{\alpha} &#x3D; \sum^{\infty}_{k&#x3D;0} \binom{\alpha}{k} x^{\alpha -k}y^k $$<br>此式即為牛頓廣義二項式定理 (Newton’s generalized binomial theorem) 。</p>
+<p>現在我們利用此定義，非常技巧性的求出 $F(x)$ 。<br> <br><br>考慮</p>
+<p>\begin{equation}<br>(1+x)^{\frac{-1}{2}}&#x3D;\sum_{k&#x3D;0}^{\infty} \binom{\frac{-1}{2}}{k}x^k &#x3D; \sum_{k\geq 0} \binom{\frac{-1}{2}}{k}x^k<br>\end{equation}</p>
+<p>其中</p>
+<p>\begin{eqnarray}<br>\binom{\frac{-1}{2}}{k} &amp;&#x3D;&amp; \dfrac{  \frac{-1}{2} \cdot \frac{-3}{2} \dots \cdot \frac{-(2k-1)}{2} }{ k! } \<br>&amp;&#x3D;&amp; \frac{ (-1)^k 1\cdot 3\cdot 5 \dots \cdot (2k-1) }{2^kk^!}  \<br>&amp;&#x3D;&amp; \dfrac{ (-1)^k (2k)! }{ 2^k k! 2^k k! } &#x3D; \frac{(-1)^k}{4^k}\binom{2k}{k}<br>\end{eqnarray}</p>
+<p>所以，合併 (8)(9) 式後可得：</p>
+<p>\begin{equation}<br>(1+x)^{\frac{-1}{2}}&#x3D;\sum_{k \geq 0} \frac{(-1)^k}{4^k} \binom{2k}{k}x^k<br>\end{equation}</p>
+<p>再經由變數變換後，將 $x$ 換為 $-4x$ ，可得</p>
+<p>\begin{equation}<br>(1-4x)^{\frac{-1}{2}} &#x3D; \frac{1}{\sqrt{1-4x}} &#x3D; \sum_{k \geq 0} \frac{(-1)^k}{4^k}\binom{2k}{k}(-4x)^k<br>\end{equation}</p>
+<p>於是發現</p>
+<p>\begin{equation}<br> &#x3D; \sum_{k \geq 0} \binom{2k}{k}x^k &#x3D; F(x)<br>\end{equation}</p>
+<p>所以，整理可得 $F^2(x)$ 的 $n$ 次方係數與冪形式 (power form)</p>
+<p>\begin{equation}<br>F^2(x)&#x3D;\frac{1}{1-4x} &#x3D; 1+4x +16x^2 + \dots + 4^nx^n +\dots<br>\end{equation}</p>
+<p>所以， (2) 式的值為 $F^2(x)$ 的 $n$ 次方係數，即 $4^n$ 。</p>
+<h2 id="指數生成函數"><a href="#指數生成函數" class="headerlink" title="指數生成函數"></a>指數生成函數</h2><p>除了前面定義過的普通生成函數 ( 亦稱做多項式生成函數 ) 之外，我們再介紹一種生成函數，稱作指數生成函數：</p>
+<blockquote>
+<p><strong>指數生成函數 (exponential generating function)</strong><br> 給定一個數列 {$a_k$}$^{\infty}_{k&#x3D;0}$ ，則函數<br> \begin{equation}<br>  f(x)&#x3D;\sum^{\infty}_{k&#x3D;0}a_k\frac{x^k}{k!}&#x3D;a_0+a_1\frac{x}{1!}+ \dots + a_k\frac{x^n}{n!} + \dots<br> \end{equation}</p>
+</blockquote>
+<p> 稱為此數列之指數生成函數。</p>
+ <br> 
+   
+<p>以下我們看一個高中生勉強可以做的例子：</p>
+<blockquote>
+<p>若有 $11$ 個新員工，要分配到甲、乙、丙、丁 $4$ 個部門，每個部門至少分配到一個員工的方法數有幾種？</p>
+</blockquote>
+<p>高中常見的做法是考慮排容原理：</p>
+<p>n(所求) &#x3D; n(全) - n(其中一個部門沒人)<br>&#x3D; n(全) - $n( \bar{甲} \cup \bar{乙} \cup \bar{丙} \cup \bar{丁} )$<br>&#x3D; n(全) - $(n( \bar{甲}) + n(\bar{乙}) + n(\bar{丙}) + n(\bar{丁}) - n( \bar{甲} \cap \bar{乙}) +\dots ) \dots ) $</p>
+<p>也有人把最後的結論當公式記憶，其答案為<br>\begin{equation}<br>1\cdot4^{11} - 4\cdot 4^{10} +6\cdot 4^9 -4 \cdot 4^8 +1\cdot 4^7.<br>\end{equation}<br>現在，我們考慮使用指數生成函數來看這個問題，就會變得簡潔許多，也就是考慮<br>\begin{equation}<br>f(x)&#x3D;(x+\frac{x^2}{2!}+\frac{x^3}{3!}+ \dots )^4<br>\end{equation}<br>其中，括弧內沒有 $1$ 而是從 $x$ 開始，代表至少要有一個員工，又因為四個部門的限制相同，所以所求為四次方。往下整理得<br>\begin{equation}<br>f(x)&#x3D;(e^x -1)^4 &#x3D; e^{4x} -4e^{3x}+6e^{2x}-4e^{x}+1<br>\end{equation}<br>所以，所求為 $\frac{x^{11}}{11!}$ 的係數，也就是 $(3.1)$ 式的值： $1\cdot4^{11} - 4\cdot 4^{10} +6\cdot 4^9 -4 \cdot 4^8 +1\cdot 4^7$ 。<br>往下還有個有趣的觀察，如果現在考慮的是全錯排，那麼有些漂亮的結果。</p>
+<h2 id="當組合與機率遇上分析：全錯排之機率"><a href="#當組合與機率遇上分析：全錯排之機率" class="headerlink" title="當組合與機率遇上分析：全錯排之機率"></a>當組合與機率遇上分析：全錯排之機率</h2><p>由上一節可以輕易得到全錯排的表示法，而中學在教古典機率時，常會有以下一個問題：</p>
+<blockquote>
+<p>若有 $5$ 封不同信要裝入 $5$ 個不同的信封袋，則求完全裝錯的機率為？</p>
+</blockquote>
+<p>高中常見的做法是一樣考慮排容原理，用 $(3.1)$ 式的方法先計算全錯排的方法數： $44$，最後再將分母除以 $5!$ ，也就是所有隨便放的可能性，其結果為<br>\begin{equation}<br>\frac{44}{5!} &#x3D; \frac{11}{30} \approx 0.367<br>\end{equation}</p>
+<p>那如果我們把問題做個延伸，變成 $10$ 封信裝入 $10$ 個不同信封皆裝錯的機率呢？ $100$ 封信呢？這有極限值嗎？有趣的是，這正好可以藉由指數生成函數來求解。考慮<br>\begin{equation}<br>(1+x+\frac{x^2}{2!}+\dots)^n<br>\end{equation}</p>
+<p>展開之 $x^n$ 係數即為所求，且此係數為</p>
+<p>\begin{equation}<br>\frac{\binom{n}{0}n! - \binom{n}{1}(n-1)! + \binom{n}{2}(n-2)! + \dots + (-1)^k\binom{n}{k}(n-k)! +\dots }{n!}<br>\end{equation}</p>
+<p>再來，我們可以觀察，當 $n$ 很大時，此式明顯收斂：</p>
+<p>\begin{equation}<br>\lim_{n \to \infty} \frac{\binom{n}{0}n! - \binom{n}{1}(n-1)! + \binom{n}{2}(n-2)! + \dots + (-1)^k\binom{n}{k}(n-k)! +\dots }{n!}<br>\end{equation}</p>
+<p>即</p>
+<p>\begin{equation}<br> &#x3D;\lim_{n\to \infty}(1-\frac{1}{n})^n&#x3D;\frac{1}{e}\approx 0.368<br>\end{equation}</p>
+<p>這給出一個很奇妙、很有趣、也很不直觀的結論，首先，奇妙的是組合學竟然與分析上常用的常數 $e$ 在此相遇，非常不可思議，再來，這結論也很不直觀，一般來說，我們會覺得現在有非常非常多封信，全部都裝錯的機率應該很低，但事實上此機率大於三成，甚至在 $n&#x3D;5$ 時就已經相當接近極限值了，是個非常有趣的結果。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/blog/2017/07/02/106%E5%A4%A7%E5%AD%B8%E6%8C%87%E8%80%83%E6%95%B8%E4%B9%99/" rel="next" title="106大學指考數乙">
+      106大學指考數乙 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8B%95%E6%A9%9F%EF%BC%9A%E7%B5%84%E5%90%88%E7%B4%9A%E6%95%B8"><span class="nav-number">1.</span> <span class="nav-text">動機：組合級數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B8"><span class="nav-number">2.</span> <span class="nav-text">生成函數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%95%B8%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B8"><span class="nav-number">3.</span> <span class="nav-text">指數生成函數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%95%B6%E7%B5%84%E5%90%88%E8%88%87%E6%A9%9F%E7%8E%87%E9%81%87%E4%B8%8A%E5%88%86%E6%9E%90%EF%BC%9A%E5%85%A8%E9%8C%AF%E6%8E%92%E4%B9%8B%E6%A9%9F%E7%8E%87"><span class="nav-number">4.</span> <span class="nav-text">當組合與機率遇上分析：全錯排之機率</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

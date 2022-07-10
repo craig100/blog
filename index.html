@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"craig100.github.io","root":"/blog/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://craig100.github.io/blog/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://craig100.github.io/blog/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://craig100.github.io/blog/2022/07/10/Some%20Notes%20for%20Hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2022/07/10/Some%20Notes%20for%20Hexo/" class="post-title-link" itemprop="url">Some Notes for Hexo.</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-07-10 23:55:56" itemprop="dateCreated datePublished" datetime="2022-07-10T23:55:56+00:00">2022-07-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Hexo 是一個快速、簡潔且高效的部落格框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在幾秒内，即可利用靚麗的主题生成靜態網頁。– Hexo 官網</p>
+<p>所以這篇文章我會放一些關於 Hexo 使用上的東西，也當作測試頁使用。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2022/07/10/Some%20Notes%20for%20Hexo/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://craig100.github.io/blog/2018/01/23/%E6%95%99%E5%AD%B8%E7%99%BC%E5%B1%95%E4%B8%AD%E5%BF%83%E5%8D%81%E9%80%B1%E5%B9%B4%E5%B0%88%E6%96%87%EF%BC%9A%E5%BE%90%E5%94%AF%E6%81%A9%E5%90%8C%E5%AD%B8%E5%B0%88%E8%A8%AA/%E6%95%99%E5%AD%B8%E7%99%BC%E5%B1%95%E4%B8%AD%E5%BF%83%E5%8D%81%E9%80%B1%E5%B9%B4%E5%B0%88%E6%96%87%EF%BC%9A%E5%BE%90%E5%94%AF%E6%81%A9%E5%90%8C%E5%AD%B8%E5%B0%88%E8%A8%AA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2018/01/23/%E6%95%99%E5%AD%B8%E7%99%BC%E5%B1%95%E4%B8%AD%E5%BF%83%E5%8D%81%E9%80%B1%E5%B9%B4%E5%B0%88%E6%96%87%EF%BC%9A%E5%BE%90%E5%94%AF%E6%81%A9%E5%90%8C%E5%AD%B8%E5%B0%88%E8%A8%AA/%E6%95%99%E5%AD%B8%E7%99%BC%E5%B1%95%E4%B8%AD%E5%BF%83%E5%8D%81%E9%80%B1%E5%B9%B4%E5%B0%88%E6%96%87%EF%BC%9A%E5%BE%90%E5%94%AF%E6%81%A9%E5%90%8C%E5%AD%B8%E5%B0%88%E8%A8%AA/" class="post-title-link" itemprop="url">教學發展中心十週年專文：徐唯恩同學專訪</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-01-23 10:02:35" itemprop="dateCreated datePublished" datetime="2018-01-23T10:02:35+00:00">2018-01-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-10 23:55:56" itemprop="dateModified" datetime="2022-07-10T23:55:56+00:00">2022-07-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>不知不覺就 2018 了，無意間在網路上又翻到這篇文章，會有這篇文章的原因，是因為我在台大教學發展中心曾擔任共四學期的微積分課輔小老師，在那邊有許多有趣的經驗，被餵食珍奶、餅乾、糖果、卡片等，更重要的是，我覺得在那邊有找回許多人對數學的信心。</p>
+<p>其實我從來不介意評鑑，反正我都講真話，該酸的會酸，該鼓勵的會鼓勵，我也只是認真做好我認為該做的事，於是就拿下了課輔小老師評鑑的第一名，那時又是教學發展中心成立第十年，所以就有了這篇專訪文章，不得不說，寫得真好。</p>
+<p>過了幾年後回頭看，也還挺有意思的，現在我在台大接了正規的助教，發現能做的竟然比在教發中心能做的少一些，我想是動機吧！當助教面對的是所有狀況的學生，當小老師面對的是有心求救的學生，總的來說，動機才是學習的根本，不論程度好壞，都是。</p>
+<p>以下就是那篇文章，有興趣也可以直接點進教發中心的網站看原版～<br><a target="_blank" rel="noopener" href="https://ctld.ntu.edu.tw/_epaper/news_detail.php?f_s_num=641">https://ctld.ntu.edu.tw/_epaper/news_detail.php?f_s_num=641</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2018/01/23/%E6%95%99%E5%AD%B8%E7%99%BC%E5%B1%95%E4%B8%AD%E5%BF%83%E5%8D%81%E9%80%B1%E5%B9%B4%E5%B0%88%E6%96%87%EF%BC%9A%E5%BE%90%E5%94%AF%E6%81%A9%E5%90%8C%E5%AD%B8%E5%B0%88%E8%A8%AA/%E6%95%99%E5%AD%B8%E7%99%BC%E5%B1%95%E4%B8%AD%E5%BF%83%E5%8D%81%E9%80%B1%E5%B9%B4%E5%B0%88%E6%96%87%EF%BC%9A%E5%BE%90%E5%94%AF%E6%81%A9%E5%90%8C%E5%AD%B8%E5%B0%88%E8%A8%AA/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://craig100.github.io/blog/2017/08/15/%E6%88%91%E7%9C%BC%E4%B8%AD%E7%9A%84%202017%20%E5%8F%B0%E5%A4%A7%E5%8F%B2%E6%87%B7%E5%93%B2%E7%87%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2017/08/15/%E6%88%91%E7%9C%BC%E4%B8%AD%E7%9A%84%202017%20%E5%8F%B0%E5%A4%A7%E5%8F%B2%E6%87%B7%E5%93%B2%E7%87%9F/" class="post-title-link" itemprop="url">我眼中的 2017 台大史懷哲營</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-08-15 10:02:35" itemprop="dateCreated datePublished" datetime="2017-08-15T10:02:35+00:00">2017-08-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-10 23:55:56" itemprop="dateModified" datetime="2022-07-10T23:55:56+00:00">2022-07-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>『你拿幸運做什麼？』 – 2016 為臺灣而教 (Teach For Taiwan, TFT) 特展</p>
+</blockquote>
+<p>我想，用這句標語作為史懷哲營心得的開頭並不為過吧。<br>約莫兩年之前，差不多這個時候，在我前任的教程會長吳偉帆在教程的部落格 po 了這篇文章：<br><a target="_blank" rel="noopener" href="http://ntuedusa.blogspot.tw/2015/08/blog-post.html">http://ntuedusa.blogspot.tw/2015/08/blog-post.html</a> </p>
+<p>沒想到兩年之後，我也做了同樣的事，但我們的目的都是一樣的，都是希望能夠為台灣的教育盡一份心力。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2017/08/15/%E6%88%91%E7%9C%BC%E4%B8%AD%E7%9A%84%202017%20%E5%8F%B0%E5%A4%A7%E5%8F%B2%E6%87%B7%E5%93%B2%E7%87%9F/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://craig100.github.io/blog/2017/07/02/106%E5%A4%A7%E5%AD%B8%E6%8C%87%E8%80%83%E6%95%B8%E7%94%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2017/07/02/106%E5%A4%A7%E5%AD%B8%E6%8C%87%E8%80%83%E6%95%B8%E7%94%B2/" class="post-title-link" itemprop="url">106大學指考數甲</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-07-02 21:30:43" itemprop="dateCreated datePublished" datetime="2017-07-02T21:30:43+00:00">2017-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-10 23:55:56" itemprop="dateModified" datetime="2022-07-10T23:55:56+00:00">2022-07-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>數甲篇來啦，不過因為我設定會考數甲的人，一般來說對數學是比較熟悉的，所以說明可能不會跟前一篇一樣鉅細靡遺，但我還是會儘可能的講清楚啦。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2017/07/02/106%E5%A4%A7%E5%AD%B8%E6%8C%87%E8%80%83%E6%95%B8%E7%94%B2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://craig100.github.io/blog/2017/07/02/106%E5%A4%A7%E5%AD%B8%E6%8C%87%E8%80%83%E6%95%B8%E4%B9%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2017/07/02/106%E5%A4%A7%E5%AD%B8%E6%8C%87%E8%80%83%E6%95%B8%E4%B9%99/" class="post-title-link" itemprop="url">106大學指考數乙</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-07-02 21:20:43" itemprop="dateCreated datePublished" datetime="2017-07-02T21:20:43+00:00">2017-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-10 23:55:55" itemprop="dateModified" datetime="2022-07-10T23:55:55+00:00">2022-07-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>又到了一年一度的指考啦，筆者其實每年都會在第一時間放下手邊的是趕快來解一波，這份考題算相當平易近人，我中午一邊吃飯一邊看，大概花了30分鐘左右，但有一題要稍微麻煩一點我沒算。我會在詳解中寫的儘量詳細，但因為對 hexo 還不夠熟悉，如果有打錯一定要跟我說～～</p>
+<p>那我們開始吧！</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2017/07/02/106%E5%A4%A7%E5%AD%B8%E6%8C%87%E8%80%83%E6%95%B8%E4%B9%99/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://craig100.github.io/blog/2017/06/22/%E4%B8%80%E4%BA%9B%E7%B5%84%E5%90%88%E7%B4%9A%E6%95%B8%E8%88%87%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2017/06/22/%E4%B8%80%E4%BA%9B%E7%B5%84%E5%90%88%E7%B4%9A%E6%95%B8%E8%88%87%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B8/" class="post-title-link" itemprop="url">一些組合級數與生成函數</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-06-22 03:02:37" itemprop="dateCreated datePublished" datetime="2017-06-22T03:02:37+00:00">2017-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-10 23:55:56" itemprop="dateModified" datetime="2022-07-10T23:55:56+00:00">2022-07-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="動機：組合級數"><a href="#動機：組合級數" class="headerlink" title="動機：組合級數"></a>動機：組合級數</h2><p>  數學之浩瀚實在出乎意料。這學期，筆者在師大修了一門課，叫做數學教學解題研究，是游森棚教官開的課。在課堂中，我們要處理一個有點神奇的組合學計數問題，這個問題是這樣的：</p>
+<blockquote>
+<p>考慮座標平面上，由原點出發，每次只走右或上一格，最終抵達終點 $(n,n)$ ，則這些路徑在行進中，總共會碰到形如 $(0,0)$,$(1,1)$,$\dots$,$(n,n)$ 的點幾次？</p>
+</blockquote>
+<p>  當中使用了算兩次 (double counting) 的技巧，但因為不是本篇文章的重點，我們就先略過，最後經過一番努力後，會得到以下式子：</p>
+<p> \begin{equation}<br>    \sum^{n}_{k&#x3D;0} \binom{2k}{k} \binom{2n-2k}{n-k}<br> \end{equation}</p>
+<p>  也就是要算</p>
+<p> \begin{equation}<br>    \binom{0}{0} \binom{2n}{n}+ \binom{2}{1}\binom{2n-2}{n-1} +\binom{4}{2}\binom{2n-4}{n-2} + \dots +\binom{2n}{n} \binom{0}{0}<br> \end{equation}</p>
+<p>  並且因爲一些猜測，我們相信上式的值要是 $4^n$ ，但這個結果並不顯然，於是我們引進生成函數的概念。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2017/06/22/%E4%B8%80%E4%BA%9B%E7%B5%84%E5%90%88%E7%B4%9A%E6%95%B8%E8%88%87%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B8/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
